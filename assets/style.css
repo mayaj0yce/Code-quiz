@@ -1,0 +1,14 @@
+body {
+    display: block;
+    margin: 0px;
+  }
+
+  h1 {
+    text-align: center;
+    font-size: large;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: small;
+  }
