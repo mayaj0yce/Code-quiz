@@ -1,10 +1,60 @@
+var timer = document.getElementById('countdown');
+var myQuestions = document.getElementById('question-box');
+var win = document.querySelector(".win");
+var lose = document.querySelector(".lose");
+var timerElement = document.querySelector(".timer-count");
+var startButton = document.querySelector(".start-button");
+
+
+
+function winGame() {
+  wordBlank.textContent = "YOU WON!!!🏆 ";
+  winCounter++
+  startButton.disabled = false;
+  setWins()
+}
+
+function loseGame() {
+  wordBlank.textContent = "GAME OVER";
+  loseCounter++
+  startButton.disabled = false;
+  setLosses()
+}
+
+
+function startTimer() {
+
+  timer = setInterval(function() {
+    timerCount--;
+    timerElement.textContent = timerCount;
+    if (timerCount >= 0) {
+      
+      if (isWin && timerCount > 0) {
+       
+        clearInterval(timer);
+        winGame();
+      }
+    }
+    if (timerCount === 0) {
+      // Clears interval
+      clearInterval(timer);
+      loseGame();
+    }
+  }, 1000);
+}
+
+
+
+
+
+
 function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
 
   function showQuestions(questions, quizContainer) {
     var output = [];
     var answers;
 
-    for
+    // for
 	}
 
   function showResults(questions, quizContainer, resultsContainer) {
@@ -92,7 +142,11 @@ var myQuestions = [
     },
     correctAnswer: 'b'
   },
-	
+],
+
+function showQuestions() {
+ console.log(myQuestions);
+}
 
 function showQuestions(questions, quizContainer) {
   // we'll need a place to store the output and the answer choices
@@ -132,4 +186,3 @@ function showQuestions(questions, quizContainer) {
 submitButton.onclick = function () {
   showResults(questions, quizContainer, resultsContainer);
 }
-];
