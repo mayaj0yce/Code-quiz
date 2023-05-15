@@ -1,188 +1,155 @@
-var timer = document.getElementById('countdown');
-var myQuestions = document.getElementById('question-box');
-var win = document.querySelector(".win");
-var lose = document.querySelector(".lose");
-var timerElement = document.querySelector(".timer-count");
-var startButton = document.querySelector(".start-button");
+(function(){
+  // Functions
+  function buildQuiz(){
+    // variable to store the HTML output
+    const output = [];
 
+    // for each question...
+    myQuestions.forEach(
+      (currentQuestion, questionNumber) => {
 
+        // variable to store the list of possible answers
+        const answers = [];
 
-function winGame() {
-  wordBlank.textContent = "YOU WON!!!🏆 ";
-  winCounter++
-  startButton.disabled = false;
-  setWins()
-}
+        // and for each available answer...
+        for(letter in currentQuestion.answers){
 
-function loseGame() {
-  wordBlank.textContent = "GAME OVER";
-  loseCounter++
-  startButton.disabled = false;
-  setLosses()
-}
+          // ...add an HTML radio button
+          answers.push(
+            `<label>
+              <input type="radio" name="question${questionNumber}" value="${letter}">
+              ${letter} :
+              ${currentQuestion.answers[letter]}
+            </label>`
+          );
+        }
 
-
-function startTimer() {
-
-  timer = setInterval(function() {
-    timerCount--;
-    timerElement.textContent = timerCount;
-    if (timerCount >= 0) {
-      
-      if (isWin && timerCount > 0) {
-       
-        clearInterval(timer);
-        winGame();
+        // add this question and its answers to the output
+        output.push(
+          `<div class="slide">
+            <div class="question"> ${currentQuestion.question} </div>
+            <div class="answers"> ${answers.join("")} </div>
+          </div>`
+        );
       }
-    }
-    if (timerCount === 0) {
-      // Clears interval
-      clearInterval(timer);
-      loseGame();
-    }
-  }, 1000);
-}
-
-
-
-
-
-
-function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
-
-  function showQuestions(questions, quizContainer) {
-    var output = [];
-    var answers;
-
-    // for
-	}
-
-  function showResults(questions, quizContainer, resultsContainer) {
-    // code will go here
-  }
-
-  // show the questions
-  showQuestions(questions, quizContainer);
-
-  // when user clicks submit, show results
-  submitButton.onclick = function () {
-    showResults(questions, quizContainer, resultsContainer);
-  }
-}
-var myQuestions = [
-  {
-    question: "Inside which HTML element do we put JavaScript?",
-    answers: {
-      a: 'javascript',
-      b: 'js',
-      c: 'script'
-    },
-    correctAnswer: 'c'
-  },
-  {
-    question: "What is the correct JavaScript syntax to write 'Hello World'?",
-    answers: {
-      a: 'response.write(Hello World)',
-      b: '"Hello World"',
-      c: 'document.write("Hello World")'
-    },
-    correctAnswer: 'c'
-  },
-  {
-    question: "Where is the correct place to insert a JavaScript?",
-    answers: {
-      a: '<Body> section',
-      b: '<Head> section',
-      c: 'A and B'
-    },
-    correctAnswer: 'c'
-  },
-  {
-    question: "How do you write 'Hello World' in an alert box?",
-    answers: {
-      a: 'alert("Hello World")',
-      b: 'msgBox("Hello World")',
-      c: 'alertBox("Hello World")'
-    },
-    correctAnswer: 'a'
-  },
-  {
-    question: "How do you create a function?",
-    answers: {
-      a: 'function:myFunction()',
-      b: 'function myFunction()',
-      c: 'myFunction():function'
-    },
-    correctAnswer: 'b'
-  },
-  {
-    question: " How do you write a conditional statement for executing some statements only if i' is NOT equal to 5?",
-    answers: {
-      a: "if i==5 then",
-      b: "if (i==5)",
-      c: "if i=5 then"
-    },
-    correctAnswer: 'b'
-  },
-  {
-    question: "How can you add a comment in a JavaScript?",
-    answers: {
-      a: "//This is a comment",
-      b: "'This is a comment",
-      c: "<!--This is a comment-->"
-    },
-    correctAnswer: 'a'
-  },
-  {
-    question: "How do you wrn JavaScript, the following loop will execute ________ times: 'for (x=1; x<11; x++)ite 'Hello World' in an alert box?'",
-    answers: {
-      a: '9',
-      b: '10',
-      c: 'Unable to determine'
-    },
-    correctAnswer: 'b'
-  },
-],
-
-function showQuestions() {
- console.log(myQuestions);
-}
-
-function showQuestions(questions, quizContainer) {
-  // we'll need a place to store the output and the answer choices
-  var output = [];
-  var answers;
-
-  // for each question...
-  for (var i = 0; i < questions.length; i++) {
-
-    // first reset the list of answers
-    answers = [];
-
-    // for each available answer to this question...
-    for (letter in questions[i].answers) {
-
-      // ...add an html radio button
-      answers.push(
-        '<label>'
-        + '<input type="radio" name="question' + i + '" value="' + letter + '">'
-        + letter + ': '
-        + questions[i].answers[letter]
-        + '</label>'
-      );
-    }
-
-    // add this question and its answers to the output
-    output.push(
-      '<div class="question">' + questions[i].question + '</div>'
-      + '<div class="answers">' + answers.join('') + '</div>'
     );
+
+    // finally combine our output list into one string of HTML and put it on the page
+    quizContainer.innerHTML = output.join('');
   }
 
-  // finally combine our output list into one string of html and put it on the page
-  quizContainer.innerHTML = output.join('');
-}
+  function showResults(){
 
-submitButton.onclick = function () {
-  showResults(questions, quizContainer, resultsContainer);
-}
+    // gather answer containers from our quiz
+    const answerContainers = quizContainer.querySelectorAll('.answers');
+
+    // keep track of user's answers
+    let numCorrect = 0;
+
+    // for each question...
+    myQuestions.forEach( (currentQuestion, questionNumber) => {
+
+      // find selected answer
+      const answerContainer = answerContainers[questionNumber];
+      const selector = `input[name=question${questionNumber}]:checked`;
+      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+      // if answer is correct
+      if(userAnswer === currentQuestion.correctAnswer){
+        // add to the number of correct answers
+        numCorrect++;
+
+        // color the answers green
+        answerContainers[questionNumber].style.color = 'lightgreen';
+      }
+      // if answer is wrong or blank
+      else{
+        // color the answers red
+        answerContainers[questionNumber].style.color = 'red';
+      }
+    });
+
+    // show number of correct answers out of total
+    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+  }
+
+  function showSlide(n) {
+    slides[currentSlide].classList.remove('active-slide');
+    slides[n].classList.add('active-slide');
+    currentSlide = n;
+    if(currentSlide === 0){
+      previousButton.style.display = 'none';
+    }
+    else{
+      previousButton.style.display = 'inline-block';
+    }
+    if(currentSlide === slides.length-1){
+      nextButton.style.display = 'none';
+      submitButton.style.display = 'inline-block';
+    }
+    else{
+      nextButton.style.display = 'inline-block';
+      submitButton.style.display = 'none';
+    }
+  }
+
+  function showNextSlide() {
+    showSlide(currentSlide + 1);
+  }
+
+  function showPreviousSlide() {
+    showSlide(currentSlide - 1);
+  }
+
+  // Variables
+  const quizContainer = document.getElementById('quiz');
+  const resultsContainer = document.getElementById('results');
+  const submitButton = document.getElementById('submit');
+  const myQuestions = [
+    {
+      question: "Who invented JavaScript?",
+      answers: {
+        a: "Douglas Crockford",
+        b: "Sheryl Sandberg",
+        c: "Brendan Eich"
+      },
+      correctAnswer: "c"
+    },
+    {
+      question: "Which one of these is a JavaScript package manager?",
+      answers: {
+        a: "Node.js",
+        b: "TypeScript",
+        c: "npm"
+      },
+      correctAnswer: "c"
+    },
+    {
+      question: "Which tool can you use to ensure code quality?",
+      answers: {
+        a: "Angular",
+        b: "jQuery",
+        c: "RequireJS",
+        d: "ESLint"
+      },
+      correctAnswer: "d"
+    }
+  ];
+
+  // Kick things off
+  buildQuiz();
+
+  // Pagination
+  const previousButton = document.getElementById("previous");
+  const nextButton = document.getElementById("next");
+  const slides = document.querySelectorAll(".slide");
+  let currentSlide = 0;
+
+  // Show the first slide
+  showSlide(currentSlide);
+
+  // Event listeners
+  submitButton.addEventListener('click', showResults);
+  previousButton.addEventListener("click", showPreviousSlide);
+  nextButton.addEventListener("click", showNextSlide);
+})();
