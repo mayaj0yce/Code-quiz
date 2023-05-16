@@ -123,20 +123,18 @@
         d: "ESLint"
       },
       correctAnswer: "d"
-      {
+    },
+    {
       question: "can you create a website without CSS",
       answers: {
         a: "yes",
         b: "no",
       },
       correctAnswer: "a"
-    }
-    }
+    },
   ];
 
-buildQuiz();
-
-
+buildQuiz()
 const previousButton = document.getElementById("previous");
 const nextButton = document.getElementById("next");
 const slides = document.querySelectorAll(".slide");
@@ -145,7 +143,6 @@ let currentSlide = 0;
 
 showSlide(currentSlide);
 
-// Event listeners
 submitButton.addEventListener('click', showResults);
 previousButton.addEventListener("click", showPreviousSlide);
 nextButton.addEventListener("click", showNextSlide);
