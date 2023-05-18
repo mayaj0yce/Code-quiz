@@ -102,7 +102,7 @@
         c: "Hyper Text Multiple Language",
         d: "Hyper Tool Multi Language"
       },
-      correctAnswer: "c"
+      correctAnswer: "b"
     },
     {
       question: "What does CSS stand for?",
