@@ -172,6 +172,11 @@ function setTime() {
 
 setTime();
 
+
+
+function sendMessage() {
+  
+}
 // // Uses the `setInterval()` method to call a function to be executed every 1000 milliseconds
 //   var msgInterval = setInterval(function () {
 //     // If there are no more words left in the message
