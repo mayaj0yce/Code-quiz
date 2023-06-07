@@ -148,6 +148,30 @@ previousButton.addEventListener("click", showPreviousSlide);
 nextButton.addEventListener("click", showNextSlide);
 }) ();
 
+
+// Selects element by class
+var timeEl = document.querySelector(".time");
+
+var secondsLeft = 100;
+
+function setTime() {
+  // Sets interval in variable
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " timer.";
+
+    if(secondsLeft === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+      // Calls function to create and append image
+      sendMessage();
+    }
+
+  }, 1000);
+}
+
+setTime();
+
 // // Uses the `setInterval()` method to call a function to be executed every 1000 milliseconds
 //   var msgInterval = setInterval(function () {
 //     // If there are no more words left in the message
