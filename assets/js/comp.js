@@ -1,5 +1,23 @@
-(function () {
+function beginQuiz() {
 
+  const startButton = document.getElementById('#start');
+  const quizBlock = document.querySelector('.quiz-container')
+
+    if (startButton.style.display === "none"){
+      startButton.style.display = "none";
+    } else (
+      quizBlock.style.display = "block";
+    )
+  }
+;
+
+
+  setTimeout(function() { alert("my message"); }, time);
+
+  
+
+
+(function () {
 
     function buildQuiz() {
   // document.getElementById('start').style.visibility = "hidden"
@@ -153,4 +171,25 @@
   nextButton.addEventListener("click", showNextSlide);
   }) ();
   
-  // function startButtons()
+  // function startButtons()var timeEl = document.querySelector(".time");
+
+var secondsLeft = 10;
+
+function setTime() {
+  // Sets interval in variable
+  var timerInterval = setInterval(function() {
+    secondsLeft--;
+    timeEl.textContent = secondsLeft + " timer.";
+
+    if(secondsLeft === 0) {
+      // Stops execution of action at set interval
+      clearInterval(timerInterval);
+      // Calls function to create and append image
+      alert('Time is up!!');
+    }
+
+  }, 1000);
+}
+
+
+setTime();

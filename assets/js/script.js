@@ -1,4 +1,5 @@
-(function () {
+(function theGuts() {
+
   function buildQuiz() {
     const output = [];
 
@@ -36,8 +37,11 @@
     const answerContainers = quizContainer.querySelectorAll('.answers');
 
     let numCorrect = 0;
+    let secLeft = 100;
 
     myQuestions.forEach((currentQuestion, questionNumber) => {
+      // var secondsLeft = 100;
+      // const end = secondsLeft === 0;
 
       const answerContainer = answerContainers[questionNumber];
       const selector = `input[name=question${questionNumber}]:checked`;
@@ -47,10 +51,12 @@
       if (userAnswer === currentQuestion.correctAnswer) {
 
         numCorrect++;
+        secLeft + 5;
 
         answerContainers[questionNumber].style.color = 'lightgreen';
       }
 
+    
       else {
 
         answerContainers[questionNumber].style.color = 'red';
@@ -134,59 +140,62 @@
     },
   ];
 
-buildQuiz()
-const previousButton = document.getElementById("previous");
-const nextButton = document.getElementById("next");
-const slides = document.querySelectorAll(".slide");
-let currentSlide = 0;
+  buildQuiz()
+  const previousButton = document.getElementById("previous");
+  const nextButton = document.getElementById("next");
+  const slides = document.querySelectorAll(".slide");
+  let currentSlide = 0;
 
 
-showSlide(currentSlide);
+  showSlide(currentSlide);
 
-submitButton.addEventListener('click', showResults);
-previousButton.addEventListener("click", showPreviousSlide);
-nextButton.addEventListener("click", showNextSlide);
-}) ();
+  submitButton.addEventListener('click', showResults);
+  previousButton.addEventListener("click", showPreviousSlide);
+  nextButton.addEventListener("click", showNextSlide);
+})();
 
 
 // Selects element by class
 var timeEl = document.querySelector(".time");
 
-var secondsLeft = 100;
+var secondsLeft = 10;
 
 function setTime() {
   // Sets interval in variable
-  var timerInterval = setInterval(function() {
+  var timerInterval = setInterval(function () {
     secondsLeft--;
     timeEl.textContent = secondsLeft + " timer.";
 
-    if(secondsLeft === 0) {
+    if (secondsLeft === 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       // Calls function to create and append image
-      sendMessage();
+      alert('Time is up!!', theGuts());
     }
 
   }, 1000);
 }
 
+
 setTime();
 
 
 
+
+
+// function beginQuiz() {
+
+//   const startButton = document.getElementById('#start');
+//   const quizBlock = document.querySelector('.quiz-container')
+
+//   if (startButton.style.display === "none") {
+//     startButton.style.display = "none";
+//   } else (
+//     quizBlock.style.display = "block"
+//   )
+// }
+// beginQuiz();
+
 function sendMessage() {
-  
+
 }
-// // Uses the `setInterval()` method to call a function to be executed every 1000 milliseconds
-//   var msgInterval = setInterval(function () {
-//     // If there are no more words left in the message
-//     if (words[wordCount] === undefined) {
-//       // Use `clearInterval()` to stop the timer
-//       clearInterval(msgInterval);
-//     } else {
-//       // Display one word of the message
-//       mainEl.textContent = words[wordCount];
-//       wordCount++;
-//     }
-//   }, 1000);
-// };
