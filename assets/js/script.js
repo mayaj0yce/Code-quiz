@@ -1,4 +1,4 @@
-(function theGuts() {
+(function () {
 
   function buildQuiz() {
     const output = [];
@@ -96,10 +96,12 @@
   }
 
   // Variables
+
   const quizContainer = document.getElementById('quiz');
   const resultsContainer = document.getElementById('results');
   const submitButton = document.getElementById('submit');
   const myQuestions = [
+   
     {
       question: "What does HTML stand for?",
       answers: {
@@ -141,6 +143,7 @@
   ];
 
   buildQuiz()
+  
   const previousButton = document.getElementById("previous");
   const nextButton = document.getElementById("next");
   const slides = document.querySelectorAll(".slide");
@@ -148,7 +151,7 @@
 
 
   showSlide(currentSlide);
-
+// startButton.addEventListener('click', buildQuiz);
   submitButton.addEventListener('click', showResults);
   previousButton.addEventListener("click", showPreviousSlide);
   nextButton.addEventListener("click", showNextSlide);
@@ -160,9 +163,13 @@ var timeEl = document.querySelector(".time");
 
 var secondsLeft = 10;
 
+const startButton = document.getElementById("start");
+
 function setTime() {
+  
   // Sets interval in variable
   var timerInterval = setInterval(function () {
+//insert the start button to begin this. adding the timer that can end the code will be enough
     secondsLeft--;
     timeEl.textContent = secondsLeft + " timer.";
 
@@ -170,7 +177,7 @@ function setTime() {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
       // Calls function to create and append image
-      alert('Time is up!!', theGuts());
+      alert('Time is up!!', numCorrect === 0);
     }
 
   }, 1000);
