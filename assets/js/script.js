@@ -164,9 +164,7 @@ var timeEl = document.querySelector(".time");
 var secondsLeft = 10;
 
 const startButton = document.getElementById("start");
-
-function setTime() {
-  
+startButton.addEventListener("click", function setTime(){
   // Sets interval in variable
   var timerInterval = setInterval(function () {
 //insert the start button to begin this. adding the timer that can end the code will be enough
@@ -181,10 +179,11 @@ function setTime() {
     }
 
   }, 1000);
-}
-
+},
+),
 
 setTime();
+  
 
 
 
