@@ -162,6 +162,7 @@
 var timeEl = document.querySelector(".time");
 
 var secondsLeft = 10;
+// var restartButton = submitButton.addEventListener('click');
 
 const startButton = document.getElementById("start");
 startButton.addEventListener("click", function setTime(){
@@ -170,12 +171,18 @@ startButton.addEventListener("click", function setTime(){
 //insert the start button to begin this. adding the timer that can end the code will be enough
     secondsLeft--;
     timeEl.textContent = secondsLeft + " timer.";
-
+    document.getElementById('results');
+    
     if (secondsLeft === 0) {
       // Stops execution of action at set interval
       clearInterval(timerInterval);
+
       // Calls function to create and append image
-      alert('Time is up!!', numCorrect === 0);
+      alert('Time is up!!');
+    }
+    if (submitButton === 'click') {
+      clearInterval(timerInterval);
+      
     }
 
   }, 1000);
