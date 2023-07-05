@@ -96,7 +96,6 @@
   }
 
   // Variables
-
   const quizContainer = document.getElementById('quiz');
   const resultsContainer = document.getElementById('results');
   const submitButton = document.getElementById('submit');
@@ -143,72 +142,18 @@
   ];
 
   buildQuiz()
-  
   const previousButton = document.getElementById("previous");
   const nextButton = document.getElementById("next");
   const slides = document.querySelectorAll(".slide");
   let currentSlide = 0;
+  console.log(currentSlide);
 
-
-  showSlide(currentSlide);
-// startButton.addEventListener('click', buildQuiz);
+ showSlide(currentSlide);
   submitButton.addEventListener('click', showResults);
   previousButton.addEventListener("click", showPreviousSlide);
   nextButton.addEventListener("click", showNextSlide);
-})();
+  
+});
 
 
 // Selects element by class
-var timeEl = document.querySelector(".time");
-
-var secondsLeft = 10;
-// var restartButton = submitButton.addEventListener('click');
-
-const startButton = document.getElementById("start");
-startButton.addEventListener("click", function setTime(){
-  // Sets interval in variable
-  var timerInterval = setInterval(function () {
-//insert the start button to begin this. adding the timer that can end the code will be enough
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + " timer.";
-    document.getElementById('results');
-    
-    if (secondsLeft === 0) {
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
-
-      // Calls function to create and append image
-      alert('Time is up!!');
-    }
-    if (submitButton === 'click') {
-      clearInterval(timerInterval);
-      
-    }
-
-  }, 1000);
-},
-),
-
-setTime();
-  
-
-
-
-
-
-// function beginQuiz() {
-
-//   const startButton = document.getElementById('#start');
-//   const quizBlock = document.querySelector('.quiz-container')
-
-//   if (startButton.style.display === "none") {
-//     startButton.style.display = "none";
-//   } else (
-//     quizBlock.style.display = "block"
-//   )
-// }
-// beginQuiz();
-
-function sendMessage() {
-
-}
