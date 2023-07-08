@@ -133,7 +133,7 @@
       correctAnswer: "d"
     },
     {
-      question: "can you create a website without CSS",
+      question: "Can a website be created without CSS?",
       answers: {
         a: "yes",
         b: "no",
