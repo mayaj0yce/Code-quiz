@@ -3,18 +3,19 @@
 body{
 	font-size: 20px;
 	font-family: 'Work Sans', sans-serif;
-	color: #333;
+	/* color: #333; */
   font-weight: 300;
   text-align: center;
-  background-color: #f8f6f0;
+  /* background-color: #f8f6f0; */
+  color: olivedrab;
+  background-color: beige;
 }
 h1{
   font-weight: 300;
   margin: 0px;
   padding: 10px;
   font-size: 20px;
-  background-color: #444;
-  color: #fff;
+ 
 }
 
 h2{
@@ -41,7 +42,7 @@ h2{
 .button{
   font-family: 'Work Sans', sans-serif;
 	font-size: 22px;
-	background-color: #279;
+  background-color: olivedrab;
 	color: #fff;
 	border: 0px;
 	border-radius: 3px;
@@ -57,7 +58,7 @@ h2{
 button{
   font-family: 'Work Sans', sans-serif;
 	font-size: 22px;
-	background-color: #279;
+  background-color: olivedrab;
 	color: #fff;
 	border: 0px;
 	border-radius: 3px;
