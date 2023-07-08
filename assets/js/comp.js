@@ -157,57 +157,33 @@
   nextButton.addEventListener("click", showNextSlide);
 })();
 
+window.addEventListener('DOMContentLoaded', function () {
+  // Get the start button
+  var startButton = document.getElementById('start');
+  startButton.addEventListener('click', startTimer);
+});
 
-// Selects element by class
-var timeEl = document.querySelector(".time");
+function startTimer() {
+  var timeElement = document.querySelector('.time');
+  var timeRemaining = 60; // Set the initial time remaining in seconds
 
-var secondsLeft = 10;
-// var restartButton = submitButton.addEventListener('click');
-
-const startButton = document.getElementById("start");
-startButton.addEventListener("click", function setTime(){
-  // Sets interval in variable
+  // Update the timer every second
   var timerInterval = setInterval(function () {
-//insert the start button to begin this. adding the timer that can end the code will be enough
-    secondsLeft--;
-    timeEl.textContent = secondsLeft + " timer.";
-    document.getElementById('results');
-    
-    if (secondsLeft === 0) {
-      // Stops execution of action at set interval
-      clearInterval(timerInterval);
+    timeElement.textContent = 'Time: ' + timeRemaining + ' seconds';
 
-      // Calls function to create and append image
-      alert('Time is up!!');
-    }
-    if (submitButton === 'click') {
+    if (timeRemaining <= 0) {
       clearInterval(timerInterval);
-      
+      timeElement.textContent = 'Time\'s up!';
+      // Add your logic for what to do when the time is up
     }
 
+    timeRemaining--;
   }, 1000);
-},
-),
+}
 
-setTime();
+
+// setTime();
   
-
-
-
-
-
-// function beginQuiz() {
-
-//   const startButton = document.getElementById('#start');
-//   const quizBlock = document.querySelector('.quiz-container')
-
-//   if (startButton.style.display === "none") {
-//     startButton.style.display = "none";
-//   } else (
-//     quizBlock.style.display = "block"
-//   )
-// }
-// beginQuiz();
 
 function sendMessage() {
 
