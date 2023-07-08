@@ -1,7 +1,7 @@
 THis is a very simple quiz to test javascript knowledge. 
 
 
-git@github.com:mayaj0yce/Code-quiz.git
+link <git@github.com:mayaj0yce/Code-quiz.git>
 --
 https://mayaj0yce.github.io/Code-quiz/
 
