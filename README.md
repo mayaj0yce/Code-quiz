@@ -1,12 +1,10 @@
 THis is a very simple quiz to test javascript knowledge. 
 
 
+[githublink](https://github.com/mayaj0yce/Code-quiz.git)
+--
+[live](https://mayaj0yce.github.io/Code-quiz/)
 
-https://mayaj0yce.github.io/Code-quiz/
-
-
-
-![Screenshot (33)](https://github.com/mayaj0yce/Code-quiz/assets/129634010/3b2c1d7f-a77a-47f3-935b-9b23391e3532)
-
-
+[LOADING](https://github.com/mayaj0yce/Code-quiz/assets/129634010/82643ba0-3067-404b-9fc1-ddae7c117d21)
+[LOADED](https://github.com/mayaj0yce/Code-quiz/assets/129634010/6bf7b03c-b9ba-45b7-a9b5-4d49e867845b)
 
