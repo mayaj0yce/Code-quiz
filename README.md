@@ -1,9 +1,9 @@
 THis is a very simple quiz to test javascript knowledge. 
 
-
-link <git@github.com:mayaj0yce/Code-quiz.git>
+TEXT TO SHOW](actual URL to navigate
+[githublink](git@github.com:mayaj0yce/Code-quiz.git)
 --
-https://mayaj0yce.github.io/Code-quiz/
+[live](https://mayaj0yce.github.io/Code-quiz/)
 
 
 
